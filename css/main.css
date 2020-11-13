@@ -56,8 +56,35 @@ section button {
     font-size: 4vmin;
     width: 6vmin;
     height: 6vmin;
+    border: .3vmin solid var(--dark-blue);
+    color: var(--dark-blue);
+    border-radius: 2vmin;
+    outline: none;
+    cursor: pointer;
 }
 
 #msg {
     font-size: 4vmin;
+}
+
+#replay {
+    font-size: 2vmin;
+    font-weight: bold;
+    padding: 2vmin;
+    margin-top: 4vmin;
+    border: .3vmin solid var(--dark-blue);
+    color: var(--dark-blue);
+    border-radius: 2vmin;
+    outline: none;
+    cursor: pointer;
+}
+
+#replay:hover {
+    background-color: var(--dark-red);
+    color: var(--font-color);
+}
+
+section button:hover {
+    background-color: var(--dark-red);
+    color: var(--font-color);
 }
