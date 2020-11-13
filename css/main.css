@@ -1,0 +1,63 @@
+:root {
+    --dark-red: #8B0000;
+    --dark-blue: #31465a;
+    --cafe-bg: #b26d46;
+    --font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-color: whitesmoke;
+}
+
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: var(--font);
+}
+
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    background-color: var(--cafe-bg);
+}
+
+header {
+    font-size: 6vmin;
+    padding: 2vmin;
+    background-color: var(--dark-blue);
+    color: var(--font-color);
+    text-align: center;
+    letter-spacing: .6vmin;
+}
+
+h1 {
+    color: var(--font-color);
+    font-family: var(--font);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 2vmin;
+}
+
+section button {
+    font-family: var(--font);
+    margin: 1vmin;
+    font-size: 4vmin;
+    width: 6vmin;
+    height: 6vmin;
+}
+
+#msg {
+    font-size: 4vmin;
+}
