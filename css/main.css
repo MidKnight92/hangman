@@ -88,3 +88,17 @@ section button:hover {
     background-color: var(--dark-red);
     color: var(--font-color);
 }
+
+#gallows {
+    width: 15vmin; 
+    height: 40vmin;
+    background-image: url(../images/man.png);
+    background-size: cover;
+}
+
+#guess {
+    font-size: 5vmin;
+    letter-spacing: 2vmin;
+    color: var(--font-color);
+    text-align: center;
+}
