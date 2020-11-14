@@ -16,6 +16,10 @@ let wrongLetters;
 
 
 /*----- cached element references -----*/
+
+
+
+/*----- event listener(s) -----*/
 document.querySelector('section').addEventListener('click',handleLetterClick);
 
 // Call init to restart game
@@ -23,7 +27,9 @@ document.getElementById('replay').addEventListener('click',init());
 
 
 
-/*----- event listener(s) -----*/
+/*----- function(s) -----*/
+
+// Respond to user interaction, update state and call render
 function handleLetterClick(e){
     // Get letter
     const letter = e.target.textContent;
@@ -37,11 +43,11 @@ function handleLetterClick(e){
 
     const char = secretWord.includes(letter) ? letter : '_' ;
     console.log(char);
+
+    render();
 }
 
-
-
-/*----- function(s) -----*/
+// Render transfers all state to the DOM
 function render(){
 
 }
