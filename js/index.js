@@ -16,14 +16,16 @@ let wrongLetters;
 
 
 /*----- cached element references -----*/
+const guessEl = document.getElementById('guess');
 
+const replayBtn = document.getElementById('replay');
 
 
 /*----- event listener(s) -----*/
 document.querySelector('section').addEventListener('click',handleLetterClick);
 
 // Call init to restart game
-document.getElementById('replay').addEventListener('click',init());
+document.getElementById('replay').addEventListener('click', init);
 
 
 
@@ -49,7 +51,9 @@ function handleLetterClick(e){
 
 // Render transfers all state to the DOM
 function render(){
-
+    // Set guess(El)ement content to guessWord
+    guessEl.textContent = guessWord;
+    replayBtn.style.visibility = gameStatus ? 'visible' : 'hidden'; 
 }
 
 function init(){
