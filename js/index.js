@@ -1,14 +1,19 @@
-/*----- constants -----*/
+/*----- constant(s) -----*/
 const WORDS = [
     'ARRAY', 'FUNCTION', 'BINARY', 'VARIABLE', 'BOOLEAN',
     'REACT', 'COMPUTER SCIENCE', 'ANGULAR', 'TERMINAL', 'GIT',
     'GITHUB', 'AJAX', 'OBJECT', 'MOCHA', 'CHAI'
 ]
+
+
+
 /*----- app's state (variables) -----*/
 let secretWord;
 let guessWord;
 let gameStatus; // null = in progress; 👎 = lose; 👍 = win;
 let wrongLetters;
+
+
 
 /*----- cached element references -----*/
 document.querySelector('section').addEventListener('click',handleLetterClick);
@@ -16,14 +21,27 @@ document.querySelector('section').addEventListener('click',handleLetterClick);
 // Call init to restart game
 document.getElementById('replay').addEventListener('click',init());
 
-/*----- event listeners -----*/
+
+
+/*----- event listener(s) -----*/
 function handleLetterClick(e){
+    // Get letter
     const letter = e.target.textContent;
+
+    // ERROR HANDLING - Exit function if the following conditions exist 
+        // Check user clicked on a single letter not any space in between letters
+        // Check if gameStatus === true (player either won or lose)
+    if (e.target.tagName !== 'BUTTON' || gameStatus){
+        return;
+    }
+
     const char = secretWord.includes(letter) ? letter : '_' ;
     console.log(char);
 }
 
-/*----- functions -----*/
+
+
+/*----- function(s) -----*/
 function render(){
 
 }
@@ -39,4 +57,7 @@ function init(){
     render();
 }
 
+
+
+/*----- invoke function(s) -----*/
 init();
