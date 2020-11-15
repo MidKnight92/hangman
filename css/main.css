@@ -2,6 +2,7 @@
     --dark-red: #8B0000;
     --dark-blue: #31465a;
     --cafe-bg: #b26d46;
+    --valid: darkgreen;
     --font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     --font-color: whitesmoke;
 }
@@ -85,7 +86,7 @@ section button {
 }
 
 section button:hover {
-    background-color: var(--dark-red);
+    background-color: var(--dark-blue);
     color: var(--font-color);
 }
 
@@ -101,4 +102,26 @@ section button:hover {
     letter-spacing: 2vmin;
     color: var(--font-color);
     text-align: center;
+}
+
+button.valid-letter {
+    cursor: none;
+    color: var(--valid);
+    border: .3vmin solid var(--valid);
+}
+
+button.invalid-letter {
+    cursor: none;
+    color: var(--dark-red);
+    border: .3vmin solid var(--dark-red);
+}
+
+section button.valid-letter:hover {
+    background-color: var(--valid);
+    color: var(--font-color);
+}
+
+section button.invalid-letter:hover {
+    background-color: var(--dark-red);
+    color: var(--font-color);
 }

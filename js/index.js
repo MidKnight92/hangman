@@ -22,6 +22,7 @@ const replayBtn = document.getElementById('replay');
 
 const gallowsEl = document.getElementById('gallows');
 
+const letterBtns = document.querySelectorAll('section > button');
 /*----- event listener(s) -----*/
 document.querySelector('section').addEventListener('click',handleLetterClick);
 
@@ -68,7 +69,17 @@ function render(){
 }
 
 function renderButtons(){
-    
+    letterBtns.forEach((btn) => {
+        const letter = btn.textContent;
+        btn.disabled = guessWord.includes(letter) || wrongLetters.includes(letter);
+        if (guessWord.includes(letter)){
+            btn.className = 'valid-letter';
+        } else if (wrongLetters.includes(letter)){
+            btn.className = 'invalid-letter';
+        } else {
+            btn.className = '';
+        }
+    });
 }
 
 function init(){
