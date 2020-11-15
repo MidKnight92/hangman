@@ -1,4 +1,5 @@
 /*----- constant(s) -----*/
+
 const WORDS = [
     'ARRAY', 'FUNCTION', 'BINARY', 'VARIABLE', 'BOOLEAN',
     'REACT', 'COMPUTER SCIENCE', 'ANGULAR', 'TERMINAL', 'GIT',
@@ -8,15 +9,19 @@ const WORDS = [
 const PANEL_WIDTH = 15;
 const INCORRECT_GUESS_LIMIT = 6;
 
+///////////////////////////////////////
+
 /*----- app's state (variables) -----*/
+
 let secretWord;
 let guessWord;
 let gameStatus; // null = in progress; 👎 = lose; 👍 = win;
 let wrongLetters;
 
-
+//////////////////////////////////////////
 
 /*----- cached element references -----*/
+
 const guessEl = document.getElementById('guess');
 
 const replayBtn = document.getElementById('replay');
@@ -27,13 +32,19 @@ const letterBtns = document.querySelectorAll('section > button');
 
 const msgEl = document.getElementById('msg');
 
+//////////////////////////////////
+
 /*----- event listener(s) -----*/
+
 document.querySelector('section').addEventListener('click',handleLetterClick);
 
 // Call init to restart game
 document.getElementById('replay').addEventListener('click', init);
 
+////////////////////////////
+
 /*----- function(s) -----*/
+
 function getGameSatus(){
     if (secretWord === guessWord) return '👍';
     if (guessWord !== secretWord && wrongLetters.length >= INCORRECT_GUESS_LIMIT) return'👎';
@@ -41,14 +52,15 @@ function getGameSatus(){
 }
 
 function renderMessage(){
+    let remainingGuesses = INCORRECT_GUESS_LIMIT - wrongLetters.length;
     if (wrongLetters.length === INCORRECT_GUESS_LIMIT){
         msgEl.textContent = 'You Lose!';
     } else if (guessWord === secretWord ){
         msgEl.textContent = 'You Won!';
     }  else if (wrongLetters.length >= 4 ){
-        msgEl.textContent = 'Becareful!';
+        msgEl.textContent = `Becareful! Chances Left: ${remainingGuesses}`;
     }  else if (wrongLetters.length >= 2 ){
-        msgEl.textContent = 'You can do this! Stay Focused!';
+        msgEl.textContent = `You can do this! Stay Focused! Chances Left: ${remainingGuesses}`;
     } else {
         msgEl.textContent = 'Good Luck!';
     }
@@ -59,7 +71,7 @@ function handleLetterClick(e){
     // Get letter
     const letter = e.target.textContent;
 
-    // ERROR HANDLING - Exit function if the following conditions exist 
+    // ERROR HANDLING - Exit function if one of the following conditions exist 
         // Check user clicked on a single letter not any space in between letters
         // Check if gameStatus === true (player either won or lose)
     if (e.target.tagName !== 'BUTTON' || gameStatus){
@@ -116,7 +128,10 @@ function init(){
     render();
 }
 
-
+//////////////////////////////////
 
 /*----- invoke function(s) -----*/
+
 init();
+
+/////
