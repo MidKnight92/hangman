@@ -3,9 +3,9 @@ const WORDS = [
     'ARRAY', 'FUNCTION', 'BINARY', 'VARIABLE', 'BOOLEAN',
     'REACT', 'COMPUTER SCIENCE', 'ANGULAR', 'TERMINAL', 'GIT',
     'GITHUB', 'AJAX', 'OBJECT', 'MOCHA', 'CHAI'
-]
+];
 
-
+const PANEL_WIDTH = 15;
 
 /*----- app's state (variables) -----*/
 let secretWord;
@@ -20,6 +20,7 @@ const guessEl = document.getElementById('guess');
 
 const replayBtn = document.getElementById('replay');
 
+const gallowsEl = document.getElementById('gallows');
 
 /*----- event listener(s) -----*/
 document.querySelector('section').addEventListener('click',handleLetterClick);
@@ -48,7 +49,7 @@ function handleLetterClick(e){
         for (let i = 0; i < secretWord.length; i++){
             updateGuess += secretWord.charAt(i) === letter ? letter : guessWord.charAt(i);
         }
-        // Upate string
+        // Upate guessWord string
         guessWord = updateGuess;
     } else {
         wrongLetters.push(letter);
@@ -61,6 +62,13 @@ function render(){
     // Set guess(El)ement content to guessWord
     guessEl.textContent = guessWord;
     replayBtn.style.visibility = gameStatus ? 'visible' : 'hidden'; 
+    // Change img position with each wrong guess
+    gallowsEl.style.backgroundPositionX = `-${wrongLetters.length * PANEL_WIDTH}vmin`;
+    renderButtons();
+}
+
+function renderButtons(){
+    
 }
 
 function init(){
