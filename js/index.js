@@ -42,10 +42,17 @@ function handleLetterClick(e){
     if (e.target.tagName !== 'BUTTON' || gameStatus){
         return;
     }
-
-    const char = secretWord.includes(letter) ? letter : '_' ;
-    console.log(char);
-
+    let updateGuess = '';
+    // Check if letter is in secret word else push letter into wrongLetters array
+    if (secretWord.includes(letter)) {
+        for (let i = 0; i < secretWord.length; i++){
+            updateGuess += secretWord.charAt(i) === letter ? letter : guessWord.charAt(i);
+        }
+        // Upate string
+        guessWord = updateGuess;
+    } else {
+        wrongLetters.push(letter);
+    }
     render();
 }
 
