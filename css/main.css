@@ -36,6 +36,11 @@ h1 {
     font-family: var(--font);
 }
 
+h3 {
+    color: var(--font-color);
+    font-family: var(--font);
+}
+
 main {
     display: flex;
     flex-direction: column;
@@ -117,11 +122,13 @@ button.invalid-letter {
 }
 
 section button.valid-letter:hover {
+    cursor: none;
     background-color: var(--valid);
     color: var(--font-color);
 }
 
 section button.invalid-letter:hover {
+    cursor: none;
     background-color: var(--dark-red);
     color: var(--font-color);
 }

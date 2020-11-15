@@ -6,6 +6,7 @@ const WORDS = [
 ];
 
 const PANEL_WIDTH = 15;
+const INCORRECT_GUESS_LIMIT = 6;
 
 /*----- app's state (variables) -----*/
 let secretWord;
@@ -23,15 +24,35 @@ const replayBtn = document.getElementById('replay');
 const gallowsEl = document.getElementById('gallows');
 
 const letterBtns = document.querySelectorAll('section > button');
+
+const msgEl = document.getElementById('msg');
+
 /*----- event listener(s) -----*/
 document.querySelector('section').addEventListener('click',handleLetterClick);
 
 // Call init to restart game
 document.getElementById('replay').addEventListener('click', init);
 
-
-
 /*----- function(s) -----*/
+function getGameSatus(){
+    if (secretWord === guessWord) return '👍';
+    if (guessWord !== secretWord && wrongLetters.length >= INCORRECT_GUESS_LIMIT) return'👎';
+    return null;    
+}
+
+function renderMessage(){
+    if (wrongLetters.length === INCORRECT_GUESS_LIMIT){
+        msgEl.textContent = 'You Lose!';
+    } else if (guessWord === secretWord ){
+        msgEl.textContent = 'You Won!';
+    }  else if (wrongLetters.length >= 4 ){
+        msgEl.textContent = 'Becareful!';
+    }  else if (wrongLetters.length >= 2 ){
+        msgEl.textContent = 'You can do this! Stay Focused!';
+    } else {
+        msgEl.textContent = 'Good Luck!';
+    }
+}
 
 // Respond to user interaction, update state and call render
 function handleLetterClick(e){
@@ -55,6 +76,7 @@ function handleLetterClick(e){
     } else {
         wrongLetters.push(letter);
     }
+    gameStatus = getGameSatus();
     render();
 }
 
@@ -66,6 +88,7 @@ function render(){
     // Change img position with each wrong guess
     gallowsEl.style.backgroundPositionX = `-${wrongLetters.length * PANEL_WIDTH}vmin`;
     renderButtons();
+    renderMessage();
 }
 
 function renderButtons(){
