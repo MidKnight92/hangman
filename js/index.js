@@ -58,7 +58,7 @@ function renderMessage(){
     } else if (guessWord === secretWord ){
         msgEl.textContent = 'You Won!';
     }  else if (wrongLetters.length >= 4 ){
-        msgEl.textContent = `Becareful! Chances Left: ${remainingGuesses}`;
+        msgEl.textContent = `Be Careful! Chances Left: ${remainingGuesses}`;
     }  else if (wrongLetters.length >= 2 ){
         msgEl.textContent = `You can do this! Stay Focused! Chances Left: ${remainingGuesses}`;
     } else {
